@@ -1,4 +1,5 @@
 package input;
+import flixel.util.FlxPoint;
 import openfl.events.EventDispatcher;
 
 /**
@@ -8,6 +9,6 @@ import openfl.events.EventDispatcher;
 interface IAvatarController 
 {
 	public var dispatcher(default, null):EventDispatcher;
-	public var currentDirection(default, null):Float;
+	public var currentDirection(default, null):FlxPoint;
 	public function update():Void;
 }

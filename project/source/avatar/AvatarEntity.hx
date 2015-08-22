@@ -6,7 +6,7 @@ import flixel.FlxBasic;
  * ...
  * @author 
  */
-class AvatarManager extends FlxBasic
+class AvatarEntity extends FlxBasic
 {
 
 	public function new() 

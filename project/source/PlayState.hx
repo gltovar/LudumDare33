@@ -41,11 +41,11 @@ class PlayState extends FlxState
 	{
 		super.update();
 		
-		for ( l_direction in Reg.INPUT_TYPES_LIST )
+		for ( l_direction in Reg.DIRECTIONAL_INPUT_TYPES_LIST )
 		{
-			if ( InputMap.WSAD.inputMap[ l_direction ]() )
+			if ( InputMap.WSAD.m_inputMap[ l_direction ]() )
 			{
-				trace("DirectionPressed: " + l_direction);
+				trace("DirectionPressed. Axis " + Reg.DIRECTION_VECTORS[l_direction].m_axis + ": " + Reg.DIRECTION_VECTORS[l_direction].m_magnitude );
 			}
 		}
 		
