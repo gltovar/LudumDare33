@@ -49,6 +49,6 @@ class PlayState extends FlxState
 			}
 		}
 		
-		//FlxG.keys.reset();
+		FlxG.keys.reset(); // might be a bug fix here for keys.  asked: http://haxeflixel.com/forum/
 	}	
 }
