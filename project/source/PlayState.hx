@@ -1,18 +1,24 @@
 package;
 
+import avatar.AvatarView;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.FlxState;
+import flixel.group.FlxTypedGroup;
 import flixel.text.FlxText;
 import flixel.ui.FlxButton;
 import flixel.util.FlxMath;
 import input.InputMap;
+import avatar.AvatarEntity;
+import flixel.tile.FlxTilemap;
+import flixel.util.FlxStringUtil;
 
 /**
  * A FlxState which can be used for the actual gameplay.
  */
 class PlayState extends FlxState
 {
+	
 	/**
 	 * Function that is called up when to state is created to set it up. 
 	 */
@@ -20,7 +26,18 @@ class PlayState extends FlxState
 	{
 		super.create();
 		
+		Reg.ENTITY_LIST_AVATARS = new Array<AvatarEntity>();
+		
+		Reg.LAYER_AVATAR_VIEWS = new FlxTypedGroup<AvatarView>();
+		add(Reg.LAYER_AVATAR_VIEWS);
+		
+		var avatar:avatar.AvatarEntity = new avatar.AvatarEntity();
+		
 		var test:FlxText = new FlxText(100, 200, 100, "PLAY STATE");
+		
+		var l_map = new FlxTilemap();
+		l_map.loadMap(FlxStringUtil.imageToCSV("assets/data/test_map.png", false, 2), "assets/images/test_tiles.png", 0, 0, FlxTilemap.ALT);
+		add(l_map);
 		
 		add(test);
 	}
@@ -41,14 +58,11 @@ class PlayState extends FlxState
 	{
 		super.update();
 		
-		for ( l_direction in Reg.DIRECTIONAL_INPUT_TYPES_LIST )
+		for ( l_avatarEntity in Reg.ENTITY_LIST_AVATARS )
 		{
-			if ( InputMap.WSAD.m_inputMap[ l_direction ]() )
-			{
-				trace("DirectionPressed. Axis " + Reg.DIRECTION_VECTORS[l_direction].m_axis + ": " + Reg.DIRECTION_VECTORS[l_direction].m_magnitude );
-			}
+			l_avatarEntity.update();
 		}
 		
-		FlxG.keys.reset(); // might be a bug fix here for keys.  asked: http://haxeflixel.com/forum/
+		//FlxG.keys.reset(); // might be a bug fix here for keys.  asked: http://haxeflixel.com/forum/
 	}	
 }

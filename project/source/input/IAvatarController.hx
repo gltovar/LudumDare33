@@ -6,7 +6,7 @@ import openfl.events.EventDispatcher;
  * @author 
  */
 
-interface IAvatarController 
+interface IAvatarController extends IEntityComponent
 {
 	public var dispatcher(default, null):EventDispatcher;
 	public var currentDirection(default, null):FlxPoint;
