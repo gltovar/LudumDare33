@@ -64,7 +64,7 @@ class AvatarControllerInput extends FlxBasic implements IAvatarController
 			}
 		}
 		
-		m_avatarEntity.m_view.updateAcceleration(l_angle);
+		m_avatarEntity.getAvatarView().updateAcceleration(l_angle);
 		
 		l_angle.put();
 	}

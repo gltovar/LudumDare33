@@ -1,4 +1,5 @@
 package;
+import flixel.FlxSprite;
 
 /**
  * I'll figure out what i need to put in here as I go along
@@ -7,5 +8,5 @@ package;
 
 interface IEntity 
 {
-  
+	var view(default, null):FlxSprite;
 }

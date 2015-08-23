@@ -8,6 +8,7 @@ import flixel.tile.FlxTilemap;
 import flixel.util.FlxSave;
 import input.DirectionVector;
 import input.InputTypes;
+import item.ItemEntity;
 
 /**
  * Handy, pre-built Registry class that can be used to store 
@@ -22,12 +23,16 @@ class Reg
 	public static var AVATAR_MAX_VELOCITY:Float = 300;
 	public static var AVATAR_DRAG_MULTIPLIER:Float = 8;
 	
-	
+	public static var ENTITY_LIST_ITEMS:Array<ItemEntity>;
 	public static var ENTITY_LIST_AVATARS:Array<AvatarEntity>;
 	
-	
+	public static var MAP_FLOOR:FlxTilemap;
 	public static var MAP_WALLS:FlxTilemap;
+	public static var MAP_VENTS:FlxTilemap;
+	
 	public static var LAYER_AVATAR_VIEWS:FlxTypedGroup<AvatarView>;
+	public static var LAYER_ITEM_VIEWS:FlxTypedGroup<FlxSprite>;
+	public static var LAYER_NOISE_COLLIDERS:FlxTypedGroup<FlxSprite>;
 	public static var LAYER_DEBUG:FlxTypedGroup<FlxSprite>;
 	
 	

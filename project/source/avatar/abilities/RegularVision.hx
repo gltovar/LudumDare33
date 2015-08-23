@@ -9,13 +9,13 @@ import flixel.util.FlxPoint;
 import flixel.util.FlxVector;
 
 /**
- * ...
+ * so vision is based on line of sight, but has a long range
  * @author 
  */
 class RegularVision extends FlxBasic implements IEntityComponent
 {
 	private var m_avatarEntity:AvatarEntity;
-	private var m_viewLength:Float = 300;
+	private var m_viewLength:Float = 500;
 	private var m_viewAngle:Float = 60;
 	private var m_debugVisionSprite:FlxSprite;
 	
@@ -46,15 +46,15 @@ class RegularVision extends FlxBasic implements IEntityComponent
 	{
 		super.update();
 		
-		var l_lineToMonster:FlxVector = FlxVector.get( Reg.DEBUG_SPRITE_VIEW_TEST.x - m_avatarEntity.m_view.x, Reg.DEBUG_SPRITE_VIEW_TEST.y - m_avatarEntity.m_view.y);
+		var l_lineToMonster:FlxVector = FlxVector.get( Reg.DEBUG_SPRITE_VIEW_TEST.x - m_avatarEntity.view.x, Reg.DEBUG_SPRITE_VIEW_TEST.y - m_avatarEntity.view.y);
 		var l_canSeeMonster:Bool = false;
 		
 		if ( l_lineToMonster.length <= m_viewLength)
 		{
 			//trace(" AtM: " + l_lineToMonster.degrees + " vs Angle: " + m_avatarEntity.m_view.angle);
-			if ( angleIsInsideRange( l_lineToMonster.degrees, m_avatarEntity.m_view.angle + m_viewAngle, m_avatarEntity.m_view.angle - m_viewAngle ) )
+			if ( angleIsInsideRange( l_lineToMonster.degrees, m_avatarEntity.view.angle + m_viewAngle, m_avatarEntity.view.angle - m_viewAngle ) )
 			{
-				if ( Reg.MAP_WALLS.ray( m_avatarEntity.m_view.getMidpoint(), Reg.DEBUG_SPRITE_VIEW_TEST.getMidpoint() ) )
+				if ( Reg.MAP_WALLS.ray( m_avatarEntity.view.getMidpoint(), Reg.DEBUG_SPRITE_VIEW_TEST.getMidpoint() ) )
 				{
 					l_canSeeMonster = true;
 				}
@@ -62,7 +62,7 @@ class RegularVision extends FlxBasic implements IEntityComponent
 		}
 		
 		m_debugVisionSprite.visible = l_canSeeMonster;
-		m_debugVisionSprite.setPosition( m_avatarEntity.m_view.x, m_avatarEntity.m_view.y - 32);
+		m_debugVisionSprite.setPosition( m_avatarEntity.view.x, m_avatarEntity.view.y - 32);
 		
 		l_lineToMonster.put();
 	}

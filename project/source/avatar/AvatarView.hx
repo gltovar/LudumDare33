@@ -21,6 +21,8 @@ class AvatarView extends FlxSprite implements IEntityComponent
 		
 		loadRotatedGraphic("assets/images/avatar_test.png");
 		
+		setSize(28, 28);
+		
 		maxVelocity.set(Reg.AVATAR_MAX_VELOCITY, Reg.AVATAR_MAX_VELOCITY);
 		drag.set( maxVelocity.x * Reg.AVATAR_DRAG_MULTIPLIER, maxVelocity.y * Reg.AVATAR_DRAG_MULTIPLIER);
 		
