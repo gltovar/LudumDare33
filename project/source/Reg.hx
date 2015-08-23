@@ -2,7 +2,9 @@ package;
 
 import avatar.AvatarEntity;
 import avatar.AvatarView;
+import flixel.FlxSprite;
 import flixel.group.FlxTypedGroup;
+import flixel.tile.FlxTilemap;
 import flixel.util.FlxSave;
 import input.DirectionVector;
 import input.InputTypes;
@@ -14,6 +16,9 @@ import input.InputTypes;
  */
 class Reg
 {
+	public static var DEBUG_SPRITE_VIEW_TEST:FlxSprite;
+	
+	
 	public static var AVATAR_MAX_VELOCITY:Float = 300;
 	public static var AVATAR_DRAG_MULTIPLIER:Float = 8;
 	
@@ -21,7 +26,10 @@ class Reg
 	public static var ENTITY_LIST_AVATARS:Array<AvatarEntity>;
 	
 	
+	public static var MAP_WALLS:FlxTilemap;
 	public static var LAYER_AVATAR_VIEWS:FlxTypedGroup<AvatarView>;
+	public static var LAYER_DEBUG:FlxTypedGroup<FlxSprite>;
+	
 	
 	
 	public static var INPUT_TYPES_LIST:Array<InputTypes> = [InputTypes.UP, InputTypes.DOWN, InputTypes.LEFT, InputTypes.RIGHT, InputTypes.ACTION_1, InputTypes.ACTION_2];

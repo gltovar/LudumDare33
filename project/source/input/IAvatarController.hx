@@ -8,7 +8,7 @@ import openfl.events.EventDispatcher;
 
 interface IAvatarController extends IEntityComponent
 {
-	public var dispatcher(default, null):EventDispatcher;
-	public var currentDirection(default, null):FlxPoint;
-	public function update():Void;
+	var dispatcher(default, null):EventDispatcher;
+	function anyDirectionPressed():Bool;
+	function update():Void;
 }
