@@ -2,6 +2,7 @@ package;
 
 import flixel.FlxG;
 import flixel.FlxState;
+import flixel.text.FlxText;
 import flixel.ui.FlxButton;
 
 /**
@@ -18,7 +19,11 @@ class MenuState extends FlxState
 	{
 		super.create();
 		
-		m_startButton = new FlxButton(100, 100, "Start", startGame);
+		m_startButton = new FlxButton(0, 0, "", startGame);
+		m_startButton.setSize(1280, 720);
+		
+		var l_startText:FlxText = new FlxText(400, 300, 500, "CLICK TO START", 32);
+		add(l_startText);
 		
 		add(m_startButton);
 	}
