@@ -55,12 +55,10 @@ class PlayState extends FlxState
 				
 			case "victim":
 				l_avatarEntity = new AvatarEntity(false);
-				Reg.LIST_ENTITY_AVATARS.push( new AvatarEntity() );
 		}
 		
 		if ( l_avatarEntity != null )
 		{
-			Reg.LIST_ENTITY_AVATARS.push( l_avatarEntity );
 			l_avatarEntity.view.setPosition( l_tileX, l_tileY );
 		}
 	}
@@ -104,14 +102,6 @@ class PlayState extends FlxState
 		Reg.LAYER_AVATAR_VIEWS = new FlxTypedGroup<AvatarView>();
 		add(Reg.LAYER_AVATAR_VIEWS);
 		
-		var avatar:avatar.AvatarEntity = new avatar.AvatarEntity();
-		
-		var test:FlxText = new FlxText(100, 200, 100, "PLAY STATE");
-		
-		
-		// testing oel loader
-		
-		
 		
 		FlxG.worldBounds.setSize(Reg.MAP_WALLS.width, Reg.MAP_WALLS.height);
 		
@@ -124,8 +114,6 @@ class PlayState extends FlxState
 		l_map.loadEntities(loadItems, "items");
 		
 		l_map.loadEntities(loadCharacters, "characters");
-		
-		add(test);
 	}
 	
 	/**

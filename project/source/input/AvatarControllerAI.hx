@@ -5,6 +5,7 @@ import flixel.FlxBasic;
 import flixel.util.FlxPath;
 import flixel.util.FlxPoint;
 import flixel.util.FlxRandom;
+import flixel.util.FlxVector;
 import openfl.events.EventDispatcher;
 import room.RoomData;
 
@@ -23,6 +24,8 @@ class AvatarControllerAI extends FlxBasic implements IAvatarController
 	
 	private var m_currentPath:FlxPath;
 	
+	private var m_prevVector:FlxVector;
+	
 	public function new() 
 	{
 		super();
@@ -32,6 +35,8 @@ class AvatarControllerAI extends FlxBasic implements IAvatarController
 		
 		m_currentPath = new FlxPath();
 		m_currentPath.cancel();
+		
+		m_prevVector = new FlxVector();
 		
 	}
 	
@@ -56,9 +61,18 @@ class AvatarControllerAI extends FlxBasic implements IAvatarController
 			
 			if ( l_pathPoints != null )
 			{
-				m_currentPath.start( m_avatarEntity.view, l_pathPoints, m_avatarEntity.view.maxVelocity.x * .5, FlxPath.FORWARD, true );
+				m_currentPath.start( m_avatarEntity.view, l_pathPoints, m_avatarEntity.view.maxVelocity.x * .5, FlxPath.FORWARD );
 			}
 		}
+		
+		var l_currentVector:FlxVector = FlxVector.get(  m_avatarEntity.view.x - m_prevVector.x, m_avatarEntity.view.y - m_prevVector.y );
+		if ( l_currentVector.length > 0.01)
+		{
+			m_avatarEntity.view.angle = l_currentVector.degrees;
+		}
+		
+		
+		m_prevVector.set( m_avatarEntity.view.x, m_avatarEntity.view.y);
 	}
 	
 	public function SetEntity( _entity:IEntity ):Void
