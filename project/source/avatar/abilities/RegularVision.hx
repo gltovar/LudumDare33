@@ -46,7 +46,7 @@ class RegularVision extends FlxBasic implements IEntityComponent
 	{
 		super.update();
 		
-		var l_lineToMonster:FlxVector = FlxVector.get( Reg.DEBUG_SPRITE_VIEW_TEST.x - m_avatarEntity.view.x, Reg.DEBUG_SPRITE_VIEW_TEST.y - m_avatarEntity.view.y);
+		var l_lineToMonster:FlxVector = FlxVector.get( Reg.ENTITY_MONSTER.view.x - m_avatarEntity.view.x, Reg.ENTITY_MONSTER.view.y - m_avatarEntity.view.y);
 		var l_canSeeMonster:Bool = false;
 		
 		if ( l_lineToMonster.length <= m_viewLength)
@@ -54,7 +54,7 @@ class RegularVision extends FlxBasic implements IEntityComponent
 			//trace(" AtM: " + l_lineToMonster.degrees + " vs Angle: " + m_avatarEntity.m_view.angle);
 			if ( angleIsInsideRange( l_lineToMonster.degrees, m_avatarEntity.view.angle + m_viewAngle, m_avatarEntity.view.angle - m_viewAngle ) )
 			{
-				if ( Reg.MAP_WALLS.ray( m_avatarEntity.view.getMidpoint(), Reg.DEBUG_SPRITE_VIEW_TEST.getMidpoint() ) )
+				if ( Reg.MAP_WALLS.ray( m_avatarEntity.view.getMidpoint(), Reg.ENTITY_MONSTER.view.getMidpoint() ) )
 				{
 					l_canSeeMonster = true;
 				}

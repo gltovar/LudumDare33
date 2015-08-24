@@ -4,6 +4,7 @@ import avatar.abilities.RegularVision;
 import flixel.FlxBasic;
 import flixel.FlxG;
 import flixel.FlxSprite;
+import input.AvatarControllerAI;
 import input.AvatarControllerInput;
 import input.IAvatarController;
 
@@ -14,6 +15,8 @@ import input.IAvatarController;
 class AvatarEntity extends FlxBasic implements IEntity
 {
 
+	private var m_isPlayer:Bool;
+	
 	public var m_controller:IAvatarController;
 	public var view(default, null):FlxSprite;
 	
@@ -21,9 +24,11 @@ class AvatarEntity extends FlxBasic implements IEntity
 	
 	public var m_regularVision:RegularVision;
 	
-	public function new() 
+	public function new( _isPlayer:Bool = false ) 
 	{
 		super();
+		
+		m_isPlayer = _isPlayer;
 		
 		view = new AvatarView();
 		getAvatarView().SetEntity(this);
@@ -32,13 +37,23 @@ class AvatarEntity extends FlxBasic implements IEntity
 		
 		FlxG.camera.follow(view);
 		
-		m_controller = new AvatarControllerInput();
+		if ( _isPlayer )
+		{
+			m_controller = new AvatarControllerInput();
+		}
+		else
+		{
+			m_controller = new AvatarControllerAI();
+		}
 		m_controller.SetEntity(this);
 		
-		m_regularVision = new RegularVision();
-		m_regularVision.SetEntity(this);
+		if ( m_isPlayer == false )
+		{
+			m_regularVision = new RegularVision();
+			m_regularVision.SetEntity(this);
+		}
 		
-		Reg.ENTITY_LIST_AVATARS.push(this);
+		Reg.LIST_ENTITY_AVATARS.push(this);
 		Reg.LAYER_AVATAR_VIEWS.add(getAvatarView());
 		
 	}
@@ -48,7 +63,10 @@ class AvatarEntity extends FlxBasic implements IEntity
 		super.update();
 		
 		m_controller.update();
-		m_regularVision.update();
-	}
+		if (m_isPlayer == false)
+		{
+			m_regularVision.update();
+		}
+	}	
 	
 }

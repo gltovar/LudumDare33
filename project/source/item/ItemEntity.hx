@@ -18,7 +18,8 @@ class ItemEntity extends FlxBasic implements IEntity
 		super();
 		
 		view = new FlxSprite(500, 350);
-		view.makeGraphic(16, 16, FlxColorUtil.getRandomColor());
+		view.makeGraphic(16, 16);
+		view.color = FlxColorUtil.getRandomColor();
 		Reg.LAYER_ITEM_VIEWS.add(view);
 		
 		noiseMaker = new NoiseMakerComponent();

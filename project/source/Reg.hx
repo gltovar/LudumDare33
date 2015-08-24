@@ -9,6 +9,7 @@ import flixel.util.FlxSave;
 import input.DirectionVector;
 import input.InputTypes;
 import item.ItemEntity;
+import room.RoomData;
 
 /**
  * Handy, pre-built Registry class that can be used to store 
@@ -17,14 +18,18 @@ import item.ItemEntity;
  */
 class Reg
 {
-	public static var DEBUG_SPRITE_VIEW_TEST:FlxSprite;
+	//public static var DEBUG_SPRITE_VIEW_TEST:FlxSprite;
+	public static var ENTITY_MONSTER:AvatarEntity;
 	
 	
 	public static var AVATAR_MAX_VELOCITY:Float = 300;
 	public static var AVATAR_DRAG_MULTIPLIER:Float = 8;
 	
-	public static var ENTITY_LIST_ITEMS:Array<ItemEntity>;
-	public static var ENTITY_LIST_AVATARS:Array<AvatarEntity>;
+	public static var LIST_ROOM_DATA:Array<RoomData>;
+	
+	public static var LIST_ENTITY_ITEMS:Array<ItemEntity>;
+	public static var LIST_ENTITY_AVATARS:Array<AvatarEntity>;
+	public static var LIST_ENTITY_AVATARS_VICTIMS:Array<AvatarEntity>;
 	
 	public static var MAP_FLOOR:FlxTilemap;
 	public static var MAP_WALLS:FlxTilemap;

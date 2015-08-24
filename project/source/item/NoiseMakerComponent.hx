@@ -31,11 +31,6 @@ class NoiseMakerComponent extends FlxBasic implements IEntityComponent
 		
 		m_soundCollisionSprite = new FlxSprite(0, 0);
 		m_soundCollisionSprite.makeGraphic(cast(m_soundRadius*2), cast(m_soundRadius*2), FlxColor.TRANSPARENT);
-		FlxSpriteUtil.drawCircle(m_soundCollisionSprite, -1, -1, m_soundRadius, FlxColorUtil.getRandomColor());
-		m_soundCollisionSprite.alpha = .85;
-		m_soundCollisionSprite.setSize(m_soundRadius * 2, m_soundRadius * 2);
-		m_soundCollisionSprite.centerOffsets();
-		m_soundCollisionSprite.centerOrigin();
 		
 		
 		
@@ -49,6 +44,14 @@ class NoiseMakerComponent extends FlxBasic implements IEntityComponent
 		if (Std.is(_entity, ItemEntity))
 		{
 			m_itemEntity = cast(_entity);
+			
+			FlxSpriteUtil.drawCircle(m_soundCollisionSprite, -1, -1, m_soundRadius, FlxColor.WHITE);
+			m_soundCollisionSprite.alpha = .25;
+			m_soundCollisionSprite.color = m_itemEntity.view.color;
+			m_soundCollisionSprite.setSize(m_soundRadius * 2, m_soundRadius * 2);
+			m_soundCollisionSprite.centerOffsets();
+			m_soundCollisionSprite.centerOrigin();
+			
 		}
 		else
 		{
